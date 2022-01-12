@@ -1,0 +1,92 @@
+#include <bits/stdc++.h>
+#include <iostream>
+// #include <string_view>
+#include <string>
+using namespace std;
+#define endl "\n"
+#define ll long long
+#define array_size(type) ((char *)(&type+1)-(char*)(&type))
+#define MOD 1000000007
+// @defin
+#define mod 998244353
+#ifndef ONLINE_JUDGE
+#define debug(x) cerr<<#x<<" "<<x<<endl;
+#else
+#define debug(x)
+#endif
+template<typename KeyType, typename v1ueType>
+std::pair<KeyType, v1ueType> get_max( const std::map<KeyType, v1ueType>& x ) {
+	using pairtype = std::pair<KeyType, v1ueType>;
+	return *std::max_element(x.begin(), x.end(), [] (const pairtype & p1, const pairtype & p2) {
+		return p1.second < p2.second;
+	});
+}
+// Readme.me // CLUE HIDDEN IN STORY // PATTERN == {Practice}
+// vector<ll> primeFactors(ll n)
+// {
+// 	vector<ll>rt;
+// 	// Print the number of 2s that divide n
+// 	while (n % 2 == 0)
+// 	{
+// 		// cout << 2 << " ";
+// 		rt.push_back(2);
+// 		n = n / 2;
+// 	}
+
+// 	// n must be odd at this point. So we can skip
+// 	// one element (Note i = i +2)
+// 	for (int i = 3; i <= sqrt(n); i = i + 2)
+// 	{
+// 		// While i divides n, print i and divide n
+// 		while (n % i == 0)
+// 		{
+// 			// cout << i << " ";
+// 			rt.push_back(i);
+// 			n = n / i;
+// 		}
+// 	}
+
+// 	// This condition is to handle the case when n
+// 	// is a prime number greater than 2
+// 	if (n > 2)
+// 		rt.push_back(n);
+// 	// cout << n << " ";
+// }
+ll n;
+void solve() {
+	ll n, x;
+	cin >> n >> x;
+	ll v[x + 1];
+	v[1] = 1;
+	for (ll i = 2; i < x + 1; i++)
+	{
+		ll calc = (n % i);
+		if (calc == 0) {
+			calc = i;
+			// debug(calc)
+		}
+		v[i] = v[i - 1];
+		if (v[i] >= calc) {
+			v[i] += 1;
+		}
+	}
+	for (ll i = 1; i <= x; i++) {
+		cout << v[i] << " ";
+	}
+	cout << endl;
+
+
+
+}
+signed main()
+{
+	ios_base::sync_with_stdio(false);
+	cin.tie(NULL);
+#ifndef ONLINE_JUDGE
+	freopen("error.txt", "w", stderr);
+#endif
+	ll t = 1;
+	cin >> t;
+	while (t--) solve();
+	return 0;
+}
