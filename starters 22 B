@@ -1,0 +1,66 @@
+#include <bits/stdc++.h>
+#include <iostream>
+// #include <string_view>
+#include <string>
+using namespace std;
+#define endl "\n"
+#define ll long long
+#define array_size(type) ((char *)(&type+1)-(char*)(&type))
+#define MOD 1000000007
+// @defin
+#define mod 998244353
+#ifndef ONLINE_JUDGE
+#define debug(x) cerr<<#x<<" "<<x<<endl;
+#else
+#define debug(x)
+#endif
+template<typename KeyType, typename v1ueType>
+std::pair<KeyType, v1ueType> get_max( const std::map<KeyType, v1ueType>& x ) {
+	using pairtype = std::pair<KeyType, v1ueType>;
+	return *std::max_element(x.begin(), x.end(), [] (const pairtype & p1, const pairtype & p2) {
+		return p1.second < p2.second;
+	});
+}
+// Readme.me // CLUE HIDDEN IN STORY // PATTERN == {Practice}
+
+void solve() {
+    ll M;
+	cin >> M;
+	vector<ll> v_1;
+	for (int i = 0; i < 17; i++) {
+		for (int j = i + 1; j < 18; j++) {
+			for (int k = j + 1; k < 19; k++) {
+				for (int l = k + 1; l < 20; l++) {
+					ll to_add = (1 << l) + (1 << k) + (1 << j) + (1 << i);
+				// 	debu(to_add)
+					v_1.push_back(to_add);
+				}
+				if (v_1.size() == 1000) {
+					break;
+				}
+			}
+			if (v_1.size() == 1000) {
+				break;
+			}
+		}
+		if (v_1.size() == 1000) {
+			break;
+		}
+	}
+	
+	for (ll i = 0; i < M; i++) {
+		cout << v_1[i] << " ";
+	} cout << endl;
+}
+signed main()
+{
+	ios_base::sync_with_stdio(false);
+	cin.tie(NULL);
+#ifndef ONLINE_JUDGE
+	freopen("error.txt", "w", stderr);
+#endif
+	ll t = 1;
+	cin >> t;
+	while (t--) solve();
+	return 0;
+}
