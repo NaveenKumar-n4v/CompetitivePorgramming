@@ -1,0 +1,21 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define endl "\n"
+#define ll long long
+#define pb push_back
+#define MOD 1000000007
+int main()
+{
+	ll t = 1;
+	cin >> t;
+	while (t--) {
+		// cout << 1;
+		ll x, y, z;
+		cin >> x >> y >> z;
+		cout << abs(x * z) - abs(x * y) << endl;
+
+
+
+	}
+	return 0;
+}
